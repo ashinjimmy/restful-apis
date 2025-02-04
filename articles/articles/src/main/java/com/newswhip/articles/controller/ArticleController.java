@@ -53,7 +53,7 @@ public class ArticleController {
 	
 	// http://localhost:6060/report/ie
 		@GetMapping("/report/{countrycode}")
-		public ResponseEntity<List<ResponseDto>> getStudentById(
+		public ResponseEntity<List<ResponseDto>> getArticleByCountrycode(
 				@NotEmpty(message = "cannot be empty or null")
 				@Pattern(regexp = "^[a-zA-Z]{2,4}$", message = "invalid country code")
 				@PathVariable("countrycode") String countryCode) {
