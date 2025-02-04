@@ -1,0 +1,23 @@
+server:
+  port: 6060  # Set the application port to 6060
+
+spring:
+  application:
+    name: articles  # Set the application name to 'articles'
+
+  h2:
+    console:
+      enabled: true  # Enable H2 console for debugging
+      path: /h2-console  # Access H2 console at http://localhost:6060/h2-console
+
+  datasource:
+    url: jdbc:h2:mem:articlesdb  # In-memory H2 database
+    driver-class-name: org.h2.Driver
+    username: root  #username
+    password:  #password
+
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update  # Automatically update schema based on JPA entities
+    show-sql: true  # Print SQL queries in the console
