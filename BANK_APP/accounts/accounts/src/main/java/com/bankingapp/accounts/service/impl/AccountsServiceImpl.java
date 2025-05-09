@@ -1,0 +1,47 @@
+package com.bankingapp.accounts.service.impl;
+
+import java.util.Random;
+
+import org.springframework.stereotype.Service;
+
+import com.bankingapp.accounts.constants.AccountsConstants;
+import com.bankingapp.accounts.dto.CustomerDto;
+import com.bankingapp.accounts.entity.Accounts;
+import com.bankingapp.accounts.entity.Customer;
+import com.bankingapp.accounts.mapper.CustomerMapper;
+import com.bankingapp.accounts.repository.AccountsRepository;
+import com.bankingapp.accounts.repository.CustomerRepository;
+import com.bankingapp.accounts.service.AccountsService;
+
+import lombok.AllArgsConstructor;
+
+@Service
+@AllArgsConstructor
+public class AccountsServiceImpl implements AccountsService {
+
+	private AccountsRepository accountsRepository;
+	private CustomerRepository customerRepository;
+
+	@Override
+	public void createAccount(CustomerDto customerDto) {
+		System.out.println(customerDto);
+
+		Customer customer = CustomerMapper.mapToCustomer(customerDto, new Customer());
+		Customer savedCustomer = customerRepository.save(customer);
+		System.out.println("++++++++++++ " + savedCustomer);
+		accountsRepository.save(openAccount(savedCustomer));
+
+	}
+
+	private Accounts openAccount(Customer savedCustomer) {
+		Accounts account = new Accounts();
+		account.setCustomerId(savedCustomer.getCustomerId());
+		Long accountNumber = 1000000000L + new Random().nextLong(9000000000L);
+		account.setAccountNumber(accountNumber);
+		account.setAccountType(AccountsConstants.SAVINGS);
+		account.setBranchAddress(AccountsConstants.ADDRESS);
+		return account;
+
+	}
+
+}

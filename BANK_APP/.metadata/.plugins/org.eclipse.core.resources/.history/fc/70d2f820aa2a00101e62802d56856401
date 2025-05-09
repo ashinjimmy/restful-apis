@@ -1,0 +1,5 @@
+package com.bankingapp.accounts.constants;
+
+public class AccountsConstants {
+
+}
