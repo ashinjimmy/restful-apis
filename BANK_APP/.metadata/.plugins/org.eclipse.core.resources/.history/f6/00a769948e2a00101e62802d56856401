@@ -1,5 +1,0 @@
-package com.bankingapp.accounts.repository;
-
-public interface CustomerRepository {
-
-}
