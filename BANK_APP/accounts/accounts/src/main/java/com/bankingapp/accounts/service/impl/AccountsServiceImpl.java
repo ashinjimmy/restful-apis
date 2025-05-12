@@ -7,10 +7,13 @@ import java.util.Random;
 import org.springframework.stereotype.Service;
 
 import com.bankingapp.accounts.constants.AccountsConstants;
+import com.bankingapp.accounts.dto.AccountsDto;
 import com.bankingapp.accounts.dto.CustomerDto;
 import com.bankingapp.accounts.entity.Accounts;
 import com.bankingapp.accounts.entity.Customer;
 import com.bankingapp.accounts.exception.CustomerAlreadyExistsException;
+import com.bankingapp.accounts.exception.ResourceNotFoundException;
+import com.bankingapp.accounts.mapper.AccountsMapper;
 import com.bankingapp.accounts.mapper.CustomerMapper;
 import com.bankingapp.accounts.repository.AccountsRepository;
 import com.bankingapp.accounts.repository.CustomerRepository;
@@ -31,8 +34,9 @@ public class AccountsServiceImpl implements AccountsService {
 
 		Customer customer = CustomerMapper.mapToCustomer(customerDto, new Customer());
 		Optional<Customer> customerMobileNumber = customerRepository.findByMobileNumber(customerDto.getMobileNumber());
-		if(customerMobileNumber.isPresent()) {
-			throw new CustomerAlreadyExistsException("Customer Already Exist with the given Mobile Number "+customerDto.getMobileNumber());
+		if (customerMobileNumber.isPresent()) {
+			throw new CustomerAlreadyExistsException(
+					"Customer Already Exist with the given Mobile Number " + customerDto.getMobileNumber());
 		}
 		customer.setCreatedBy("Anonymous");
 		customer.setCreatedAt(LocalDateTime.now());
@@ -51,6 +55,20 @@ public class AccountsServiceImpl implements AccountsService {
 		account.setBranchAddress(AccountsConstants.ADDRESS);
 		return account;
 
+	}
+
+	@Override
+	public CustomerDto fetchAccountInfo(String mobileNumber) {
+
+		Customer customer = customerRepository.findByMobileNumber(mobileNumber)
+				.orElseThrow(() -> new ResourceNotFoundException("Customer", "mobile number", mobileNumber));
+
+		Accounts accounts = accountsRepository.findByCustomerId(customer.getCustomerId()).orElseThrow(
+				() -> new ResourceNotFoundException("Account", "customerId", customer.getCustomerId().toString()));
+		
+		CustomerDto customerDto = CustomerMapper.mapToCustomerDto(customer, new CustomerDto());
+        customerDto.setAccountsDto(AccountsMapper.mapToAccountsDto(accounts, new AccountsDto()));
+        return customerDto;
 	}
 
 }

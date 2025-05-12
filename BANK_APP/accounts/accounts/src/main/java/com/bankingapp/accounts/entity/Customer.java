@@ -22,7 +22,6 @@ public class Customer extends Base {
 	@Column(name = "customer_id")
 	private Long customerId;
 
-	
 	private String name;
 
 	private String emailId;

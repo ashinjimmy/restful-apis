@@ -17,14 +17,19 @@ public class GlobalExceptionHandler {
 	public ResponseEntity<ErrorResponseDto> handleCustomerException(CustomerAlreadyExistsException exception,
 			WebRequest request) {
 
-		/*
-		 * private String apiPath; private HttpStatus errorCode; private String
-		 * errorMessage; private LocalDateTime errorTime;
-		 */
 		ErrorResponseDto errorResponse = new ErrorResponseDto(request.getDescription(false), HttpStatus.BAD_REQUEST,
 				exception.getMessage(), LocalDateTime.now());
 
 		return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
+	}
+
+	@ExceptionHandler(ResourceNotFoundException.class)
+	public ResponseEntity<ErrorResponseDto> handleResourceNotFoundException(ResourceNotFoundException exception,
+			WebRequest request) {
+		ErrorResponseDto errorResponse = new ErrorResponseDto(request.getDescription(false), HttpStatus.NOT_FOUND,
+				exception.getMessage(), LocalDateTime.now());
+
+		return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
 	}
 
 }
