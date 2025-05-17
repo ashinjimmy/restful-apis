@@ -3,7 +3,7 @@
 FROM openjdk:17-jdk-slim
 
 #Copy the jar file to a Docker image 
-COPY target/accounts-0.0.1-SNAPSHOT.jar accounts-0.0.1-SNAPSHOT.jar
+COPY target/accounts-0.0.1-SNAPSHOT.jar accountsapp.jar
 
 #Execute the application
-ENTRYPOINT ["java","-jar","accounts-0.0.01-SNAPSHOT.jar"]
+ENTRYPOINT ["java","-jar","accountsapp.jar"]
