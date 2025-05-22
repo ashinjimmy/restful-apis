@@ -1,0 +1,31 @@
+
+
+
+server:
+  port: 9093
+
+spring:
+  application:
+    name: cards
+
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driverClassName: org.h2.Driver
+    username: sa
+    password: 
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        
+        
+        
+build:
+  version: "1.0"
