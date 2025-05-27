@@ -27,3 +27,6 @@ spring:
         
 build:
   version: "1.0"
+  
+accounts:
+  "Message":"Welcome to "
