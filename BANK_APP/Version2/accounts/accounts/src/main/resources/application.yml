@@ -23,10 +23,24 @@ spring:
     properties:
       hibernate:
         format_sql: true
+  config:
+    import:
+     - application_qa.yml
+     - application_prod.yml
+    
+  profiles:
+   active:          
+     - "prod"
         
         
 build:
-  version: "1.0"
+  version: "3.0"
   
 accounts:
-  "Message":"Welcome to "
+  message: "Welcome to Banking App's Accounts Local APIs"
+  contactDetails:
+    name: "Ashin Developer"
+    email: "xyz@gmail.com"
+  onCallSupport: 
+   -(353)89000123
+   -(353)88003343
