@@ -9,11 +9,11 @@ spring:
 build:
   version: "2.0"
   
-card:
-  message: "Welcome to Banking App's Cards QA APIs"
+loan:
+  message: "Welcome to Banking App's Loans QA APIs"
   contactDetails:
-    name: "Oscar Developer"
-    email: "osci@gmail.com"
+    name: "Eman Developer"
+    email: "em@gmail.com"
   onCallSupport: 
    -(353)3900-0123
    -(353)6800-3343

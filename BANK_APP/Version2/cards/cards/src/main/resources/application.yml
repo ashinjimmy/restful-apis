@@ -40,7 +40,7 @@ spring:
 build:
   version: "3.0"
   
-accounts:
+card:
   message: "Welcome to Banking App's Card Local APIs"
   contactDetails:
     name: "Daniel Developer"

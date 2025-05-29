@@ -26,6 +26,25 @@ spring:
         format_sql: true
         
         
+  config:
+    import:
+     - application_qa.yml
+     - application_prod.yml
+    
+  profiles:
+   active:          
+     - "qa"
+        
+        
 build:
-  version: "1.0"
+  version: "3.0"
+  
+loan:
+  message: "Welcome to Banking App's Loan Local APIs"
+  contactDetails:
+    name: "Mark Developer"
+    email: "mk@gmail.com"
+  onCallSupport: 
+   -(353)89000123
+   -(353)88003343
 
