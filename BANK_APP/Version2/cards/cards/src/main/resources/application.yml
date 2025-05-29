@@ -27,5 +27,24 @@ spring:
         
         
         
+  config:
+    import:
+     - application_qa.yml
+     - application_prod.yml
+    
+  profiles:
+   active:          
+     - "prod"
+        
+        
 build:
-  version: "1.0"
+  version: "3.0"
+  
+accounts:
+  message: "Welcome to Banking App's Card Local APIs"
+  contactDetails:
+    name: "Daniel Developer"
+    email: "dan@gmail.com"
+  onCallSupport: 
+   -(353)89000123
+   -(353)88003343

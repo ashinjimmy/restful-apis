@@ -1,0 +1,19 @@
+
+spring:
+ config:
+  activate:
+   on-profile: "qa"
+
+
+
+build:
+  version: "2.0"
+  
+accounts:
+  message: "Welcome to Banking App's Cards QA APIs"
+  contactDetails:
+    name: "Oscar Developer"
+    email: "osci@gmail.com"
+  onCallSupport: 
+   -(353)3900-0123
+   -(353)6800-3343
