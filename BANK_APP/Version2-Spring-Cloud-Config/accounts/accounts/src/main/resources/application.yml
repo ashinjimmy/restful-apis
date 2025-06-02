@@ -1,0 +1,35 @@
+
+
+server:
+  port: 9091
+
+spring:
+  application:
+    name: "accounts"
+  
+  profiles:
+   active: "prod"
+     
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driverClassName: org.h2.Driver
+    username: sa
+    password: 
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+  config:
+    import: "configserver:http://localhost:8071/"
+    
+##debug: true
+     
+    
+

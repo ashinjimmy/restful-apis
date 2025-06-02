@@ -1,0 +1,50 @@
+
+
+
+server:
+  port: 9092
+
+spring:
+  application:
+    name: loans
+
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driverClassName: org.h2.Driver
+    username: sa
+    password: 
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        
+        
+  config:
+    import:
+     - application_qa.yml
+     - application_prod.yml
+    
+  profiles:
+   active:          
+     - "qa"
+        
+        
+build:
+  version: "3.0"
+  
+loan:
+  message: "Welcome to Banking App's Loan Local APIs"
+  contactDetails:
+    name: "Mark Developer"
+    email: "mk@gmail.com"
+  onCallSupport: 
+   -(353)89000123
+   -(353)88003343
+
