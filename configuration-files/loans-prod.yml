@@ -1,0 +1,19 @@
+
+spring:
+ config:
+  activate:
+   on-profile: "prod"
+
+
+
+build:
+  version: "1.0"
+  
+loan:
+  message: "Welcome to Banking App's Loan's Production APIs"
+  contactDetails:
+    name: "Luke Developer"
+    email: "lk@gmail.com"
+  onCallSupport: 
+   -(353)1900-0123
+   -(353)2800-3343
