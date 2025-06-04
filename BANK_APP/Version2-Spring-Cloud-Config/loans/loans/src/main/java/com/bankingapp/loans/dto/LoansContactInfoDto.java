@@ -5,7 +5,13 @@ import java.util.Map;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
+import lombok.Data;
+
 @ConfigurationProperties(prefix = "loan")
-public record LoansContactInfoDto(String message, Map<String, String> contactDetails, List<String> onCallSupport) {
+@Data
+public class LoansContactInfoDto {
+	private String message;
+	private Map<String, String> contactDetails;
+	private List<String> onCallSupport;
 
 }
